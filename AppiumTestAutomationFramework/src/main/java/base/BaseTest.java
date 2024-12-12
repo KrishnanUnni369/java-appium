@@ -11,15 +11,16 @@ public class BaseTest {
     protected AndroidDriver driver;
 
     public void setup() throws MalformedURLException {
-        UiAutomator2Options options = new UiAutomator2Options()
-                .setPlatformName("Android")
-                .setPlatformVersion("11.0")
-                .setDeviceName("emulator-5554")
-                .setAutomationName("UiAutomator2")
-                .setApp("C:/Users/krishnan.u/Downloads/ApiDemos-debug.apk")
-                .setNewCommandTimeout(Duration.ofSeconds(3600))
-                .setEnsureWebviewsHavePages(true)
-                .setNativeWebScreenshot(true);
+       UiAutomator2Options options = new UiAutomator2Options()
+        .setPlatformName("Android") // Specifies the platform to be tested (Android).
+        .setPlatformVersion("11.0") // Specifies the version of the Android platform to be used.
+        .setDeviceName("emulator-5554") // Identifies the device or emulator to use for testing.
+        .setAutomationName("UiAutomator2") // Specifies the automation engine (UiAutomator2 is widely used for Android).
+        .setApp(System.getProperty("user.dir") + "/path to apk") // Path to the app under test. Changed to a generic path using `user.dir` to get the current directory.
+        .setNewCommandTimeout(Duration.ofSeconds(3600)) // Sets the timeout for a new command to 3600 seconds (useful for long-running tests).
+        .setEnsureWebviewsHavePages(true) // Ensures that all WebViews have pages loaded before interacting with them.
+        .setNativeWebScreenshot(true); // Enables taking screenshots for hybrid and native apps.
+
 
         // Set hardware keyboard manually
         options.setCapability("connectHardwareKeyboard", true);
